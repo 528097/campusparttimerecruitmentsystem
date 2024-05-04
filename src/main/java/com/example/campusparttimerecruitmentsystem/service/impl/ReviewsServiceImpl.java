@@ -11,6 +11,7 @@ import com.example.campusparttimerecruitmentsystem.entity.Users;
 import com.example.campusparttimerecruitmentsystem.mapper.JobPostsMapper;
 import com.example.campusparttimerecruitmentsystem.mapper.ReviewsMapper;
 import com.example.campusparttimerecruitmentsystem.request.CommentRequest;
+import com.example.campusparttimerecruitmentsystem.request.ReviewRequest;
 import com.example.campusparttimerecruitmentsystem.response.Response;
 import com.example.campusparttimerecruitmentsystem.response.ResumesResponse;
 import com.example.campusparttimerecruitmentsystem.service.IReviewsService;
@@ -52,6 +53,7 @@ public class ReviewsServiceImpl extends ServiceImpl<ReviewsMapper, Reviews> impl
         reviews.setStudentId(users.getUserId());
         reviews.setComment(request.getComment());
         reviews.setRating(request.getRating());
+        reviews.setReviewer(users.getUserName());
         int insert = reviewsMapper.insert(reviews);
         if (insert <= 0 ) {
             return new Response(false,reviews,"评论失败");
@@ -84,13 +86,18 @@ public class ReviewsServiceImpl extends ServiceImpl<ReviewsMapper, Reviews> impl
     }
 
     @Override
-    public IPage<Reviews> findReviews(Long id,Integer rating,int pageNum, int pageSize) {
+    public IPage<Reviews> findReviews(ReviewRequest request, int pageNum, int pageSize) {
+        Users users = studentsServiceimpl.userInfo();
+        Integer id1 = users.getUserId();
         Page<Reviews> page =new Page<>(pageNum,pageSize);
         QueryWrapper<Reviews> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("version",1).eq("job_post_id",id);
-        if (rating != null) {
+        queryWrapper.eq("version",1).eq("student_id",id1);
+        if (request.getJobPostId()!= null) {
+            queryWrapper.eq("job_post_id", request.getJobPostId());
+        }
+        if (request.getRating() != null) {
             // 如果描述非空，则添加状态查询条件
-            queryWrapper.eq("rating", rating);
+            queryWrapper.eq("rating", request.getRating());
         }
         IPage<Reviews> reviewsIPage = reviewsMapper.selectPage(page,queryWrapper);
         return reviewsIPage;

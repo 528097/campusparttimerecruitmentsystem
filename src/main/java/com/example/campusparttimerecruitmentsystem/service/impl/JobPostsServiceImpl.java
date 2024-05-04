@@ -70,6 +70,10 @@ public class JobPostsServiceImpl extends ServiceImpl<JobPostsMapper, JobPosts> i
         Page<JobPosts> page =new Page<>(pageNum,pageSize);
         QueryWrapper<JobPosts> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("version",1);
+        if ( request.getCompanyId()!= null ) {
+            // 如果描述非空，则添加状态查询条件
+            queryWrapper.eq("company_id", request.getCompanyId());
+        }
         if ( request.getCompanyName()!= null ) {
             // 如果描述非空，则添加状态查询条件
             queryWrapper.like("company_name", request.getCompanyName());

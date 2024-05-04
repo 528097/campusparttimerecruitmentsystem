@@ -13,6 +13,8 @@ import com.example.campusparttimerecruitmentsystem.response.Response;
 import com.example.campusparttimerecruitmentsystem.service.IApplicationsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sun.glass.ui.Application;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,7 +67,7 @@ public class ApplicationsServiceImpl extends ServiceImpl<ApplicationsMapper, App
 
     @Override
     public IPage<ApplicationResponse> findApplications(int pageNum, int pageSize,
-                                                       String realName, String title, String gender,
+                                                       String realName, String title, String gender,String status,String result,String interviewRecords,
                                                        LocalDateTime applyTimeStart, LocalDateTime applyTimeEnd,
                                                        LocalDate postDateStart, LocalDate postDateEnd) {
         // 创建分页对象
@@ -78,6 +80,9 @@ public class ApplicationsServiceImpl extends ServiceImpl<ApplicationsMapper, App
                 realName,
                 title,
                 gender,
+                status,
+                result,
+                interviewRecords,
                 applyTimeStart,
                 applyTimeEnd,
                 postDateStart,

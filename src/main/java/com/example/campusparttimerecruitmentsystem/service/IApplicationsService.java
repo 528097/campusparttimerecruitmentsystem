@@ -31,10 +31,14 @@ public interface IApplicationsService extends IService<Applications> {
             String realName,
             String title,
             String gender,
+            String status,
+            String result,
+            String interviewRecords,
             LocalDateTime applyTimeStart,
             LocalDateTime applyTimeEnd,
             LocalDate postDateStart,
             LocalDate postDateEnd
+
     );
 
     IPage<ApplicationResponse> findApplicationsStudent(int pageNum, int pageSize, String title, LocalDateTime applyTimeStart, LocalDateTime applyTimeEnd, LocalDate postDateStart, LocalDate postDateEnd);

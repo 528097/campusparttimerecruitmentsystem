@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 徐渝钦
- * @since 2024-04-15
+ * @since 2024-04-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -37,6 +37,8 @@ public class Reviews implements Serializable {
     private LocalDateTime reviewTime;
 
     private Integer version;
+
+    private String reviewer;
 
 
 }

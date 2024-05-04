@@ -39,9 +39,8 @@ public class CompaniesServiceImpl extends ServiceImpl<CompaniesMapper, Companies
         QueryWrapper<Companies> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("company_id", users.getUserId());
         Companies companies1 = companiesMapper.selectOne(queryWrapper);
-        Companies companies;
         if (companies1 == null) {
-            companies = new Companies();
+            Companies companies = new Companies();
             companies.setCompanyId(users.getUserId());
             int insert = companiesMapper.insert(companies);
             if (insert <= 0) {
@@ -64,11 +63,23 @@ public class CompaniesServiceImpl extends ServiceImpl<CompaniesMapper, Companies
         companies1.setLocation(companies.getLocation());
         companies1.setContactPerson(companies.getContactPerson());
         companies1.setDescription(companies.getDescription());
+        companies1.setQualifications(companies.getQualifications());
         boolean isUpdated = companiesMapper.update(companies1,queryWrapper) > 0;
         if (isUpdated) {
             return new Response(true,companiesMapper.selectOne(queryWrapper),"更新成功");
         } else {
             return new Response(false,companiesMapper.selectOne(queryWrapper),"更新失败");
         }
+    }
+
+    @Override
+    public Response find(Companies companies) {
+        QueryWrapper<Companies> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("company_id",companies.getCompanyId());
+        Companies companies1 = companiesMapper.selectOne(queryWrapper);
+        if (companies1 != null) {
+            return new Response(true,companies1,"查找成功");
+        }
+        return new Response(false,null,"查找失败");
     }
 }

@@ -1,8 +1,15 @@
 package com.example.campusparttimerecruitmentsystem.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.example.campusparttimerecruitmentsystem.entity.JobPosts;
+import com.example.campusparttimerecruitmentsystem.entity.Resumes;
 import com.example.campusparttimerecruitmentsystem.entity.Users;
+import com.example.campusparttimerecruitmentsystem.request.JobPostRequest;
+import com.example.campusparttimerecruitmentsystem.request.ResumesRequest;
+import com.example.campusparttimerecruitmentsystem.request.UserRequest;
 import com.example.campusparttimerecruitmentsystem.response.LoginResponse;
+import com.example.campusparttimerecruitmentsystem.response.Response;
 import com.example.campusparttimerecruitmentsystem.service.IStudentsService;
 import com.example.campusparttimerecruitmentsystem.service.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,4 +64,28 @@ public class UsersController {
         }
     }
 
+    @RequestMapping("/page")
+    public IPage<Users> usersIPagePage(
+            @RequestBody UserRequest request,
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize) {
+        IPage<Users> page = usersService.findAll(request, pageNum, pageSize);
+        return page;
+    }
+    @RequestMapping("/create")
+    public Response createUser(@RequestBody Users Users) {
+        return usersService.createUser(Users);
+    }
+    @RequestMapping("/delete/{id}")
+    public Response deleteUser(@PathVariable Long id,@RequestBody Users users) {
+        return usersService.deleteById(id,users);
+    }
+    @RequestMapping("/update/{id}")
+    public Response updateUser(@PathVariable Long id,@RequestBody Users users) {
+        return usersService.updateUser(id,users);
+    }
+    @RequestMapping("/photo")
+    public Response photo(@RequestBody Users users) {
+        return usersService.photo(users);
+    }
 }

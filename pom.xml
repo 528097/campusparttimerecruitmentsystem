@@ -23,6 +23,13 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.3.0</version>
         </dependency>
+        <!--图床-->
+        <!-- hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.5.8</version>
+        </dependency>
         <!-- 添加代码生成器依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -39,7 +46,6 @@
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
-
         <!-- 添加模板引擎依赖，例如使用Freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>

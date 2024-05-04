@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 徐渝钦
- * @since 2024-04-10
+ * @since 2024-05-02
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -22,7 +22,6 @@ import lombok.experimental.Accessors;
 public class Companies implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @TableId(value = "company_id", type = IdType.AUTO)
     private Integer companyId;
 
@@ -37,6 +36,8 @@ public class Companies implements Serializable {
     private String phone;
 
     private String description;
+
+    private String qualifications;
 
 
 }

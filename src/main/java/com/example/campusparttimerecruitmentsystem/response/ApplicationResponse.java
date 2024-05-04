@@ -20,6 +20,10 @@ public class ApplicationResponse {
     private String status;
 
     private Integer resumesId;
+
+    private String interviewRecords;
+
+    private String result;
     //通过jobPostId连表查询得到的岗位信息
     private String title;
 
@@ -34,6 +38,10 @@ public class ApplicationResponse {
     private String requirements;
 
     private LocalDate postDate;
+
+    private String companyId;
+
+    private String companyName;
     //通过studentId连表查询得到的应聘者信息
     private String realName;
 

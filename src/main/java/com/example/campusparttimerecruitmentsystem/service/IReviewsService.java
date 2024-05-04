@@ -5,6 +5,7 @@ import com.example.campusparttimerecruitmentsystem.entity.Resumes;
 import com.example.campusparttimerecruitmentsystem.entity.Reviews;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.campusparttimerecruitmentsystem.request.CommentRequest;
+import com.example.campusparttimerecruitmentsystem.request.ReviewRequest;
 import com.example.campusparttimerecruitmentsystem.response.Response;
 import com.example.campusparttimerecruitmentsystem.response.ResumesResponse;
 
@@ -22,5 +23,5 @@ public interface IReviewsService extends IService<Reviews> {
 
     Response delete(Long id);
 
-    IPage<Reviews> findReviews(Long id,Integer rating,int pageNum, int pageSize);
+    IPage<Reviews> findReviews(ReviewRequest request, int pageNum, int pageSize);
 }

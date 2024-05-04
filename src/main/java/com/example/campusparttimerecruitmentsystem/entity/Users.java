@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 徐渝钦
- * @since 2024-04-19
+ * @since 2024-05-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -44,6 +44,10 @@ public class Users implements Serializable {
     private LocalDateTime updateTime;
 
     private String status;
+
+    private Integer version;
+
+    private String photo;
 
 
 }

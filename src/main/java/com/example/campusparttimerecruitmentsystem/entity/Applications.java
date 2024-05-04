@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 徐渝钦
- * @since 2024-04-12
+ * @since 2024-04-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -39,6 +39,10 @@ public class Applications implements Serializable {
     private Integer companyId;
 
     private Integer version;
+
+    private String interviewRecords;
+
+    private String result;
 
 
 }

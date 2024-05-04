@@ -24,7 +24,7 @@ public class Students implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "students_id", type = IdType.AUTO)
+    @TableId(value = "student_id", type = IdType.NONE)
     private Integer studentId;
 
     private String realName;

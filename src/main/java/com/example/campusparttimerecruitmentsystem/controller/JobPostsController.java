@@ -34,9 +34,9 @@ public class JobPostsController {
     }
     @RequestMapping("/page")
     public IPage<JobPosts> jobPage(
-            @RequestBody JobPostRequest request,
-            @RequestParam(defaultValue = "1") int pageNum,
-            @RequestParam(defaultValue = "10") int pageSize) {
+            @RequestBody JobPostRequest request) {
+        Integer pageSize = request.getPageSize();
+        Integer pageNum = request.getPageNum();
         IPage<JobPosts> page = jobPostsService.findAll(request, pageNum, pageSize);
         return page;
     }

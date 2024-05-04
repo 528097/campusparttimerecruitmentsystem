@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 @Data
-public class JobPostRequest {
+public class JobPostRequest extends PageRequest{
 
     private Integer jobPostId;
 

@@ -19,4 +19,7 @@ public interface ICompaniesService extends IService<Companies> {
     Response bean();
 
     Response updateBean(Companies companies);
+
+
+    Response find(Companies companies);
 }

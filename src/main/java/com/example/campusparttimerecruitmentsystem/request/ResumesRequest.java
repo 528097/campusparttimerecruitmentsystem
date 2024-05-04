@@ -3,7 +3,7 @@ package com.example.campusparttimerecruitmentsystem.request;
 import lombok.Data;
 
 @Data
-public class ResumesRequest {
+public class ResumesRequest extends PageRequest{
     private Integer resumeId;
     private String experience;
 

@@ -101,7 +101,7 @@ public class StudentsServiceImpl extends ServiceImpl<StudentsMapper, Students> i
     }
     public Users findByEmail(String email) {
         QueryWrapper<Users> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("email", email);
+        queryWrapper.eq("email", email).eq("version",1);
         return usersMapper.selectOne(queryWrapper);
     }
 }

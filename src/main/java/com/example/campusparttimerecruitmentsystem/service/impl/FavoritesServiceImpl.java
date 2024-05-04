@@ -48,7 +48,7 @@ public class FavoritesServiceImpl extends ServiceImpl<FavoritesMapper, Favorites
         Favorites favorites = new Favorites();
         favorites.setJobPostId(request.getJobPostId());
         favorites.setStudentId(users.getUserId());
-        queryWrapper.eq("job_post_id",request.getJobPostId());
+        queryWrapper.eq("job_post_id",request.getJobPostId()).eq("version",1);
         if (favoritesMapper.selectOne(queryWrapper) != null) {
             return new Response(true,null,"你已经收藏过这个招聘信息了");
         }
@@ -84,6 +84,10 @@ public class FavoritesServiceImpl extends ServiceImpl<FavoritesMapper, Favorites
         }
         if (StringUtils.isNotEmpty(request.getWorkHours())) {
             queryWrapper.like("work_hours", request.getWorkHours());
+        }
+        if (request.getPostDate() != null) {
+            // 如果发布日期非空，则添加状态查询条件
+            queryWrapper.eq("post_date", request.getPostDate());
         }
         // 使用 MyBatis-Plus 提供的分页查询方法，传入 Page 对象和 QueryWrapper 对象
         IPage<JobPosts> jobPostsIPage = jobPostsMapper.selectPage(page, queryWrapper);
