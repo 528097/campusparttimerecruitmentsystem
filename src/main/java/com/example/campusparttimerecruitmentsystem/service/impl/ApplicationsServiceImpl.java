@@ -22,6 +22,7 @@ import javax.mail.MessagingException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -50,7 +51,7 @@ public class ApplicationsServiceImpl extends ServiceImpl<ApplicationsMapper, App
         QueryWrapper<Applications> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("student_id",users.getUserId()).eq("job_post_id",jobPosts.getJobPostId()).eq("status","pending").eq("version",1);
         Applications applications1 = applicationsMapper.selectOne(queryWrapper);
-        if (applications1 != null) {
+        if (applications1 != null && Objects.equals(applications1.getStatus(), "pending")) {
             return new Response(false,applications1,"你已经投递过简历，请等待企业反馈");
         }
         Applications applications = new Applications();

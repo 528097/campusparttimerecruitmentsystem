@@ -7,7 +7,6 @@ import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  * <p>
@@ -15,9 +14,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  * </p>
  *
  * @author 徐渝钦
- * @since 2024-04-11
+ * @since 2024-05-10
  */
-
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
@@ -50,6 +48,11 @@ public class Resumes implements Serializable {
     private LocalDateTime updateTime;
 
     private Integer version;
+
+    /**
+     * 附件简历
+     */
+    private String pdfResume;
 
 
 }

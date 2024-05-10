@@ -71,6 +71,10 @@ public class ApplicationResponse {
      * 工作意向
      */
     private String objectives;
+    /**
+     * 附件简历
+     */
+    private String pdfResume;
 
 
 }

@@ -99,6 +99,10 @@ public class ReviewsServiceImpl extends ServiceImpl<ReviewsMapper, Reviews> impl
             // 如果描述非空，则添加状态查询条件
             queryWrapper.eq("rating", request.getRating());
         }
+        if (request.getComment() != null) {
+            // 如果描述非空，则添加状态查询条件
+            queryWrapper.like("comment", request.getComment());
+        }
         IPage<Reviews> reviewsIPage = reviewsMapper.selectPage(page,queryWrapper);
         return reviewsIPage;
     }

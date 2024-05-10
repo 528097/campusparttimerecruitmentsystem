@@ -45,6 +45,7 @@ public class ResumesServiceImpl extends ServiceImpl<ResumesMapper, Resumes> impl
         resumes1.setExperience(resumes.getExperience());
         resumes1.setSkills(resumes.getSkills());
         resumes1.setObjectives(resumes.getObjectives());
+        resumes1.setPdfResume(resumes.getPdfResume());
         int insert = resumesMapper.insert(resumes1);
         if (insert <= 0 ) {
             return new ResumesResponse(false,resumes1,"创建简历出现未知错误");
@@ -98,6 +99,7 @@ public class ResumesServiceImpl extends ServiceImpl<ResumesMapper, Resumes> impl
         resumes.setObjectives(request.getObjectives());
         resumes.setSkills(request.getSkills());
         resumes.setExperience(request.getExperience());
+        resumes.setPdfResume(request.getPdfResume());
         boolean isUpdated = resumesMapper.update(resumes, queryWrapper) > 0;
         // 如果更新成功，返回新的更新后的考勤记录
         if (isUpdated) {

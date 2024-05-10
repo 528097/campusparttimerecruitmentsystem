@@ -17,4 +17,6 @@ public class ResumesRequest extends PageRequest{
      */
     private String objectives;
 
+    private String pdfResume;
+
 }
