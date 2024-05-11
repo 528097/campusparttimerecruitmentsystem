@@ -91,7 +91,10 @@ public class ReviewsServiceImpl extends ServiceImpl<ReviewsMapper, Reviews> impl
         Integer id1 = users.getUserId();
         Page<Reviews> page =new Page<>(pageNum,pageSize);
         QueryWrapper<Reviews> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("version",1).eq("student_id",id1);
+        queryWrapper.eq("version",1);
+        if (request.getStudentId()!= null) {
+            queryWrapper.eq("student_id", request.getStudentId());
+        }
         if (request.getJobPostId()!= null) {
             queryWrapper.eq("job_post_id", request.getJobPostId());
         }

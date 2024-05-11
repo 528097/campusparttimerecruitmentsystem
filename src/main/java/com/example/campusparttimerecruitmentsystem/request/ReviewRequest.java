@@ -14,4 +14,6 @@ public class ReviewRequest extends PageRequest{
     private String comment;
 
     private LocalDateTime reviewTime;
+
+    private Integer studentId;
 }
